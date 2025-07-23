@@ -41,20 +41,20 @@ var terrymoves = {
 var terrySpecialMoves = ["terry/terryspec2.gif", "terry/lowkick.gif"];
 var flag = false;
 var speed = 5;
-var currentMove = ""; // ✅ NEW: tracks the current move shown on char1
+var currentMove = ""; 
 var terryspeed = 5;
 var terrycount = 25;
 var rugalcount = 25;
 function updateHealthBars() {
-  // Clamp between 0 and 25
+
   rugalcount = Math.max(0, Math.min(25, rugalcount));
   terrycount = Math.max(0, Math.min(25, terrycount));
 
-  // Convert to %
+ 
   const rugalHealthPercent = (rugalcount / 25) * 100;
   const terryHealthPercent = (terrycount / 25) * 100;
 
-  // Apply widths
+  
   char1status.style.width = rugalHealthPercent + "%";
   char2status.style.width = terryHealthPercent + "%";
 }
@@ -120,7 +120,7 @@ function character(command) {
         if (randomIndex === 1) {
           char2.style.width = "500px";
           char2.style.right = "30%";
-          rugalcount -= 4; // 💥 Rugal takes damage too
+          rugalcount -= 4; 
         } else {
           char2.style.width = "1000px";
           terrycount += 5;
@@ -147,7 +147,7 @@ function character(command) {
     char1.style.width = "600px";
     char2.src = terrymoves.superkick;
     char2.style.width = "800px";
-    rugalcount -= 3; // taking damage from Terry's superkick
+    rugalcount -= 3;
     updateHealthBars();
   }
 }
@@ -175,7 +175,7 @@ function rugal(event) {
 window.addEventListener("load", function () {
   var timer = document.querySelector(".timer");
 
-  updateHealthBars(); // Initial health bar fill
+  updateHealthBars(); 
 
   setTimeout(() => {
     const countdown = setInterval(() => {
@@ -208,7 +208,6 @@ window.addEventListener("load", function () {
   }, 5000);
 });
 
-// Enable keyboard controls after intro
 setTimeout(() => {
   window.addEventListener("keydown", rugal);
 }, 6000);
